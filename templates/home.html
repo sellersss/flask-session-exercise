@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+<div class="row d-flex w-100 mx-auto mt-4">
+    <div class="col-6 mt-4">
+        <p class=" display-4 text-center text-light">{{ info }}</p>
+
+    </div>
+    <div class="col-6 mt-5 w-25 p-3">
+        <form action="/session" method="POST" name="survey" class="form-group text-center d-flex">
+            <select name="survey_choice" class="custom-select custom-select-lg">
+                {% for survey in surveys.keys() %}
+                <option value={{ survey }}>{{ survey.capitalize() }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn btn-outline-light ml-2 text-nowrap btn-lg">Begin survey</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
